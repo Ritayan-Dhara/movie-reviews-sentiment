@@ -5,20 +5,17 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
-from textblob import TextBlob
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
+import time
 
 import pickle
+from textblob import TextBlob
 
 
-with warnings.catch_warnings():
-      warnings.simplefilter("ignore", category=UserWarning)
-      clf = pickle.load(open('sentiment_model .pkl', 'rb'))
-      cv = pickle.load(open('CountVectorizer.pkl', 'rb'))
-#clf.__getstate__()['_sklearn_version']
-#cv.__getstate__()['_sklearn_version']
-
-
-data = pd.read_csv('movie_list.csv')
+data = pickle.load(open("movie_list.pkl",'rb'))
 
 
 """import sklearn
